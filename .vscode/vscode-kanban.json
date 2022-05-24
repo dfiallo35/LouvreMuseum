@@ -1,0 +1,96 @@
+{
+  "todo": [
+    {
+      "creation_time": "2022-05-23T18:06:20.449Z",
+      "description": {
+        "content": "Desarrollar el back end del catálogo",
+        "mime": "text/markdown"
+      },
+      "id": "5",
+      "prio": 3,
+      "references": [],
+      "title": "Backend de catalog"
+    },
+    {
+      "creation_time": "2022-05-23T17:59:20.661Z",
+      "description": {
+        "content": "Desarrollar la base de datos según el modelo planteado.",
+        "mime": "text/markdown"
+      },
+      "id": "1",
+      "prio": 3,
+      "references": [],
+      "title": "Desarrollar base de datos"
+    },
+    {
+      "creation_time": "2022-05-23T18:02:11.860Z",
+      "details": {
+        "content": "Desarrollar el frontend del homepage, desde este se llega al catálogo",
+        "mime": "text/markdown"
+      },
+      "id": "3",
+      "prio": 3,
+      "references": [],
+      "title": "Frontend de Homepage"
+    },
+    {
+      "creation_time": "2022-05-23T18:10:12.291Z",
+      "description": {
+        "content": "Buscar o crear plantillas adecuadas para el proyecto, proporcionando una base para las paginas html en base.html",
+        "mime": "text/markdown"
+      },
+      "id": "6",
+      "prio": 2,
+      "references": [],
+      "title": "Busqueda o creación de plantillas de frontend"
+    },
+    {
+      "creation_time": "2022-05-23T18:04:49.980Z",
+      "description": {
+        "content": "Desarrollar el frontend del catálogo",
+        "mime": "text/markdown"
+      },
+      "id": "4",
+      "prio": 3,
+      "references": [],
+      "title": "Frontend de catallog"
+    },
+    {
+      "creation_time": "2022-05-23T18:19:36.471Z",
+      "description": {
+        "content": "Plantear y desarrollar la gestión de préstamos",
+        "mime": "text/markdown"
+      },
+      "id": "8",
+      "prio": 0,
+      "references": [],
+      "title": "Desarrolar la gestión de préstamos"
+    },
+    {
+      "creation_time": "2022-05-23T18:11:25.842Z",
+      "details": {
+        "content": "Crear un super usuario que será el encargado de asignar roles y gestionar usuarios. Luego se le asignará a cada rol los derechos que tendrán de acceso a la base de datos.",
+        "mime": "text/markdown"
+      },
+      "id": "7",
+      "prio": 0,
+      "references": [],
+      "title": "Gestión de usuarios"
+    }
+  ],
+  "in-progress": [],
+  "testing": [],
+  "done": [
+    {
+      "creation_time": "2022-05-23T18:01:36.977Z",
+      "description": {
+        "content": "Diseñar el core del proyecto",
+        "mime": "text/markdown"
+      },
+      "id": "2",
+      "prio": 0,
+      "references": [],
+      "title": "Diseño global del proyecto"
+    }
+  ]
+}
