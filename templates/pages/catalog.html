@@ -1,7 +1,46 @@
-{% extends 'base.html' %}
+<head>
+<style>
 
-{% block content %}
-<h1>
-    Catalog
-</h1>
+h1 {
+    text-align: center;
+  }
+</style>
+</head>
+
+
+{% extends 'base.html' %} {% block content %}
+
+
+  
+
+<div class="container">
+
+    <h1>Catalog</h1>
+
+    <ul>
+        {% for artwork in artworkslist %}
+
+        <div class="card mb-3" style="max-width: 1024px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{artwork.image.url}}" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title">{{artwork.name}}</h2>
+                        <h4 class="card-text">{{artwork.type}}</h4>
+                        <p class="card-text">{{artwork.author}}</p>
+                        <p class="card-text">{{artwork.period}}</p>
+                        <p class="card-text">{{artwork.creation_date}}</p>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        {% endfor %}
+
+    </ul>
+</div>
+
 {% endblock content %}
