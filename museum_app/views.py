@@ -3,7 +3,7 @@ from .models import Artwork
 
 # Create your views here.
 
-def home_page(request):
+def home(request):
     return render(request, 'pages/home.html')
 
 # def catalog(request):
