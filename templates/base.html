@@ -16,6 +16,7 @@
     </head>
 
     <body>
+      
         <!-- Top Bar -->
   <section id="top-bar" class="p-3">
     <div class="container">
@@ -49,28 +50,8 @@
     </div>
   </section>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="{% static "img/Logo-museo2.png" %}" class="logo" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <ul class="navbar-nav">
-          <li class="nav-item active mr-3">
-            <a class="nav-link" href="home.html">Home</a>
-          </li>
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-        </ul>
 
-      </div>
-    </div>
-  </nav>
+
   
 
         {% block content %}{% endblock content %}
@@ -79,9 +60,9 @@
         <!-- Footer -->
   <footer id="main-footer" class="py-4 bg-primary text-white text-center">
     Copyright &copy;
-    <span class="year"></span> BT Real Estate
+    <span class="year"></span>Museum
   </footer>
-  
+
     </body>
 
 </html>
