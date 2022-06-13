@@ -17,10 +17,13 @@ class CollaboratingMuseumAd(admin.ModelAdmin):
     list_display = ('name',)
 
 class GivenAd(admin.ModelAdmin):
-    list_display = ('collaborating_museum', 'given_time', 'amount_received')
+    list_display = ('artwork', 'collaborating_museum', 'given_time', 'amount_received')
 
 class RestorationAd(admin.ModelAdmin):
-    list_display = ('restoration_type', 'start_date', 'finish_date')
+    list_display = ('artwork', 'restoration_type', 'start_date', 'finish_date', 'state')
+
+class ExibitionAd(admin.ModelAdmin):
+    list_display = ('artwork', 'state')
 
 
 admin.site.register(Artwork, ArtworkAd)
@@ -30,3 +33,4 @@ admin.site.register(Sculpture, SculptureAd)
 admin.site.register(CollaboratingMuseum, CollaboratingMuseumAd)
 admin.site.register(Given, GivenAd)
 admin.site.register(Restoration, RestorationAd)
+admin.site.register(Exibition, ExibitionAd)
