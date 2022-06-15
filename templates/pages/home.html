@@ -2,43 +2,72 @@
 
 {% load static %}
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="catalog.html">
-        <img src="{% static "img/Logo-museo2.png" %}" class="logo" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <ul class="navbar-nav">
-            
-            <li class="nav-item active mr-3">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item mr-3">
-              <a class="nav-link" href="{% url 'catalog' %}">Catalog</a>
-            </li>
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="about.html">About</a>
-            </li>
-        </ul>
 
+<!--NavBar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+  <div class="container">
+    <img src="{% static "img/louvre-museum-icon-louvre-museum-1282799.png" %}" class="logo px-1 my-1" alt="">
+      <h1 class="fs-1 px-1 my-1 text-white serif">Louvre Museum</h1>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item serif"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">HOME</a></li>          
+              <li class="nav-item serif"><a class="nav-link" href="{% url 'catalog' %}">CATALOG</a></li>
+              <li class="nav-item serif"><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
+              <li class="nav-item serif"><a class="nav-link" href="{% url 'contact' %}">CONTACT US</a></li>
+          </ul>
       </div>
-    </div>
-  </nav>
+  </div>
+</nav>
 
-  <section id="showcase-inner" class="py-5 text-white">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h3 class="display-4">Museum Home Page</h3>
-          <p class="lead">Travel, discover, enjoy!</p>
-        </div>
-      </div>
+<!--SubNavBar-->
+<section class="bg-image" style="background-image: url({% static "img/home_image_1.jpg" %});">
+  <section class="py-5 bg-primary-70">
+    <div class="text-center my-2">
+        <h1 class="text-white fs-0 my-1 fw-bolder serif">Louvre Museum</h1>
+        <p class="text-white-75 fs-1 mb-0 serif">Travel, discover, enjoy!</p>
     </div>
+  </section>
 </section>
-<hr>
+
+
+
+<!--Body-->
+<section class="py-5 bg-white">
+  <div class="container my-5">
+      <h2 class="text-center fs-1 my-5">TEXT</h2>
+      <div class="row justify-content-between">
+          <div class="col-lg-6">
+              
+              <p class="lead">
+                  text text text text text text text text text text text text text text text text 
+                  text text text text text text text text text text text text text text text text 
+                  text text text text text text text text text text text text text text text text 
+                  text text text text text text text text text text text text text text text text 
+                  text text text text text text text text text text text text text text text text 
+                  text text text text text text text text text text text text text text text text 
+                  text text text text text text text text text text text text text text text text 
+                  text text text text text text text text text text text text text text text text 
+                  text text text text text text text text text text text text text text text text 
+              </p>
+              
+          </div>
+          <div class="col-lg-6">
+          
+                  <img class="logo-gif" src="{% static "img/image_processing20201115-10548-1kq6tsk.gif" %}" alt="Card image">
+          </div>
+      </div>
+
+  </div>
+</section>
+
+<section class="bg-dark text-white text-center bg-image" style="background-image: url({% static "img/home_image_2.jpg" %});">
+  <section class="py-5 bg-primary-70">
+    <h2 class="fs-0 serif">Visit our Artworks Catalog</h2>
+    <h4>TEXT</h4>
+    <a href="{% url 'catalog' %}" class="btn btn-secondary text-white btn-lg">Catalog</a>
+  </section>
+</section>
+
 
 {% endblock content %}

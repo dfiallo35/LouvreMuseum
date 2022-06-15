@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block content %}
+
+{% load static %}
+
+<!--NavBar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <img src="{% static "img/louvre-museum-icon-louvre-museum-1282799.png" %}" class="logo px-1 my-1" alt="">
+        <h1 class="fs-1 px-1 my-1 text-white serif">Louvre Museum</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item serif"><a class="nav-link" href="{% url 'home' %}">HOME</a></li>          
+                <li class="nav-item serif"><a class="nav-link" href="{% url 'catalog' %}">CATALOG</a></li>
+                <li class="nav-item serif"><a class="nav-link active" aria-current="page" href="{% url 'about' %}">ABOUT</a></li>
+                <li class="nav-item serif"><a class="nav-link" href="{% url 'contact' %}">CONTACT US</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--SubNavBar-->
+<section class="bg-image" style="background-image: url({% static "img/about_image_1.png" %});">
+    <section class="py-5 bg-primary-70">
+        <div class="text-center my-2">
+        <h1 class="text-white fs-0 my-1 fw-bolder serif">About Louvre</h1>
+        </div>
+    </section>
+</section>
+
+<section id="team" class="py-5">
+    <div class="container">
+      <h2 class="text-center serif">Museum workers</h2>
+      <div class="row text-center">
+        <div class="col-md-4">
+        <img  class="rounded-circle mb-3" style="height: 70%; width: 50%;" src="{% static "img/Ateliers-enfant-2014-Musee-du-Louvre-Olivier-Ouadah-1024x681.jpg" %}" alt="">
+          <h4 class="serif">Kyle Brown</h4>
+          <p class="text-success">
+            <i class="text-success mb-3"></i>Director</p>
+        </div>
+
+        <div class="col-md-4">
+        <img  class="rounded-circle mb-3" style="height: 70%; width: 50%;" src="{% static "img/Ateliers-enfant-2014-Musee-du-Louvre-Olivier-Ouadah-1024x681.jpg" %}" alt="">
+          <h4 class="serif">Mark Hudson</h4>
+          <p class="text-success">Catalog Manager</p>
+ 
+        </div>
+
+        <div class="col-md-4">
+            <img  class="rounded-circle mb-3" style="height: 70%; width: 50%;" src="{% static "img/Ateliers-enfant-2014-Musee-du-Louvre-Olivier-Ouadah-1024x681.jpg" %}" alt="">
+          <h4 class="serif">Jenny Johnson</h4>
+          <p class="text-success">Restorer</p>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+{% endblock %}
