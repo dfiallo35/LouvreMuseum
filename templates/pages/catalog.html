@@ -37,31 +37,9 @@
 
       {% for artwork in artworkslist %}
 
-      {% comment %} <div class="card p-2 m-2 border-primary" style="max-width: 624px;">
-        <div class="row g-0">
-
-          <div class="col-md-4">
-            <img class="card-img-top" src="{{artwork.image.url}}">
-          </div>
-
-          <div class="col-md-8">
-            <div class="card-body">
-              <h2 class="card-title">{{artwork.name}}</h2>
-              <hr>
-              <h4 class="card-text">{{artwork.type}}</h4>
-              <p class="card-text">{{artwork.author}}</p>
-              <p class="card-text">{{artwork.period}}</p>
-              <p class="card-text">{{artwork.creation_date}}</p>
-            </div>
-          </div>
-
-        </div>
-      </div> {% endcomment %}
-
-
       <div class="col-md-4 mb-4">
         <div class="card border-left-dark border-dark rounded shadow" style="background-color:#ced4da;">
-          <img class="" style=" max-width: 500px; max-height: 290px;" src="{{artwork.image.url}}" alt="">
+          <img class="" style=" max-width: 500px; max-height: 290px; object-fit: none;" src="{{artwork.image.url}}" alt="">
           <div class="card-body">
 
             <div class="listing-heading text-center">
@@ -94,7 +72,32 @@
   <ul>
     {% for artwork in artworkslist %}
 
-      <div class="card px-4 my-4" style="max-width: 1024px;">
+
+      {% comment %} <div class="card p-2 m-2 border-primary" style="max-width: 624px;">
+        <div class="row g-0">
+
+          <div class="col-md-4">
+            <img class="card-img-top" src="{{artwork.image.url}}">
+          </div>
+
+          <div class="col-md-8">
+            <div class="card-body">
+              <h2 class="card-title">{{artwork.name}}</h2>
+              <hr>
+              <h4 class="card-text">{{artwork.type}}</h4>
+              <p class="card-text">{{artwork.author}}</p>
+              <p class="card-text">{{artwork.period}}</p>
+              <p class="card-text">{{artwork.creation_date}}</p>
+            </div>
+          </div>
+
+        </div>
+      </div> {% endcomment %}
+
+
+
+
+      {% comment %} <div class="card px-4 my-4" style="max-width: 1024px;">
         <div class="row g-0">
           <div class="col-md-4">
             <img src="{{artwork.image.url}}" class="img-fluid rounded-start">
