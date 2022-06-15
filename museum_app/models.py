@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Model
+from datetime import datetime
 
 
 class Artwork(Model):
@@ -10,15 +11,16 @@ class Artwork(Model):
     creation_date = models.DateField('Creation Date')
     entry_date = models.DateField('Entry date')
     image = models.ImageField('Image', upload_to="")
-    type = models.CharField('Type', max_length=100)
+    type = "Artwork"
 
     def __str__(self):
         return self.name
 
 
 class State(Model):
-    artwork = models.OneToOneField(Artwork, on_delete=models.CASCADE, verbose_name='Artwork')
+    artwork = models.ForeignKey(Artwork, on_delete=models.CASCADE, verbose_name='Artwork')
     state = 'Exhibition'
+    date_time = models.DateTimeField('Date and Time')
 
     def __str__(self):
         return self.state
@@ -27,10 +29,12 @@ class State(Model):
 class Painting(Artwork):
     technique = models.CharField('Technique', max_length=100)
     style = models.CharField('Style', max_length=100)
+    type = 'Painting'
 
 class Sculpture(Artwork):
     material = models.CharField('Material', max_length=100)
     style = models.CharField('Style', max_length=100)
+    type = 'Sculpture'
 
 
 class CollaboratingMuseum(Model):
@@ -42,29 +46,16 @@ class CollaboratingMuseum(Model):
 
 #State descendants
 class Given(State):
-    STATE = [
-        ('Given', 'Given'),
-    ]
-    state_name = models.CharField('State', max_length=20, choices=STATE, editable=True)
     collaborating_museum = models.ForeignKey(CollaboratingMuseum, on_delete=models.CASCADE)
     given_time = models.DurationField('Given time')
     amount_received = models.IntegerField('Amount Received')
     state = 'Given'
 
 class Restoration(State):
-    STATE = [
-        ('Restoration', 'Restoration'),
-    ]
-    state_name = models.CharField('State', max_length=20, choices=STATE, editable=True)
     restoration_type = models.CharField('Restoration Type', max_length=100)
-    start_date = models.DateField('Start Date')
     finish_date = models.DateField('Finish Date')
     state = 'Restoration'
     
 
 class Exibition(State):
-    STATE = [
-        ('Exhibition', 'Exhibition')
-    ]
-    state_name = models.CharField('State', max_length=20, choices=STATE, editable=True)
     state = 'Exhibition'
