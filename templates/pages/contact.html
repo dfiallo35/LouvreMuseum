@@ -5,19 +5,34 @@
 <!--NavBar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
     <div class="container">
-        <img src="{% static "img/louvre-museum-icon-louvre-museum-1282799.png" %}" class="logo px-1 my-1" alt="">
+      <img src="{% static "img/louvre-museum-icon-louvre-museum-1282799.png" %}" class="logo px-1 my-1" alt="">
         <h1 class="fs-1 px-1 my-1 text-white serif">Louvre Museum</h1>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item serif"><a class="nav-link" href="{% url 'home' %}">HOME</a></li>          
-                <li class="nav-item serif"><a class="nav-link" href="{% url 'catalog' %}">CATALOG</a></li>
+  
+                <div class="nav-item serif"></div>
+                <div class="dropdown">
+                    <button class="btn serif btn-secondary dropdown-toggle nav-link"
+                            style="background-color:#343a40"
+                            type="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">CATALOG
+                    </button>
+  
+                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="{% url 'catalog' %}">All Artworks</a>
+                      <a class="dropdown-item" href="">Rooms...</a>
+                    </div>
+                </div>
+  
                 <li class="nav-item serif"><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
                 <li class="nav-item serif"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">CONTACT US</a></li>
             </ul>
         </div>
     </div>
-</nav>
+  </nav>
 
 <!--SubNavBar-->
 
