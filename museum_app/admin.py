@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import *
 
+
+@admin.register(Artwork)
 class ArtworkAd(admin.ModelAdmin):
     list_display = (
         'name',
@@ -126,6 +128,7 @@ class RestorationAd(admin.ModelAdmin):
 
 @admin.register(Exibition)
 class ExibitionAd(admin.ModelAdmin):
+    list_display = (
         'artwork',
         'date_time',
     )
