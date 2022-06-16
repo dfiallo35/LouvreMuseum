@@ -122,10 +122,5 @@ class Exibition(State):
 
 
 
-class Shit(Artwork):
-    class Meta:
-        proxy = True
-        verbose_name = "Shit"
-        verbose_name_plural = "Shits"
 
 
