@@ -37,7 +37,7 @@ class Artwork(Model):
 
 class State(Model):
     artwork = models.ForeignKey(Artwork, verbose_name='Artwork',
-                                on_delete=models.DO_NOTHING,
+                                on_delete=models.CASCADE,
                                 related_name='artwork')
     date_time = models.DateTimeField('Date and Time', auto_now_add=True)
 
@@ -45,7 +45,7 @@ class State(Model):
         verbose_name = "State"
         verbose_name_plural = "States"
         get_latest_by = "date_time"
-        ordering = ["date_time"]
+        ordering = ["-date_time"]
 
 
 #Artwork descendants
@@ -74,6 +74,7 @@ class CollaboratingMuseum(Model):
     class Meta:
         verbose_name = "Collaborating Museum"
         verbose_name_plural = "Collaborating Museums"
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
@@ -91,7 +92,7 @@ class Given(State):
         verbose_name = "Given"
         verbose_name_plural = "Givens"
         get_latest_by = "date_time"
-        ordering = ["date_time"]
+        ordering = ["-date_time"]
 
     def __str__(self):
         return 'Given'
@@ -104,7 +105,7 @@ class Restoration(State):
         verbose_name = "Restauration"
         verbose_name_plural = "Restaurations"
         get_latest_by = "date_time"
-        ordering = ["date_time"]
+        ordering = ["-date_time"]
 
     def __str__(self):
         return 'Restoration'
@@ -115,7 +116,7 @@ class Exibition(State):
         verbose_name = "Exibition"
         verbose_name_plural = "Exibitions"
         get_latest_by = "date_time"
-        ordering = ["date_time"]
+        ordering = ["-date_time"]
 
     def __str__(self):
         return 'Exibition'
