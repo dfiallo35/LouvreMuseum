@@ -17,7 +17,7 @@ def current_state(obj: Artwork):
     if len(current_state) != 0:
         return current_state[0]
     
-    current_state:Exibition = Exibition.objects.filter(state_ptr=states.id)
+    current_state:Exhibition = Exhibition.objects.filter(state_ptr=states.id)
     if len(current_state) != 0:
         return current_state[0]
     
@@ -152,8 +152,8 @@ class RestorationAd(admin.ModelAdmin):
         'restoration_type',
     )
 
-@admin.register(Exibition)
-class ExibitionAd(admin.ModelAdmin):
+@admin.register(Exhibition)
+class ExhibitionAd(admin.ModelAdmin):
     list_display = (
         'artwork',
         'date_time',

@@ -111,17 +111,17 @@ class Restoration(State):
         return 'Restoration'
     
 
-class Exibition(State):
+class Exhibition(State):
     class Meta:
-        verbose_name = "Exibition"
-        verbose_name_plural = "Exibitions"
+        verbose_name = "Exhibition"
+        verbose_name_plural = "Exhibitions"
         get_latest_by = "date_time"
         ordering = ["-date_time"]
 
     def __str__(self):
-        return 'Exibition'
 
 
 
 
 
+        return 'Exhibition'

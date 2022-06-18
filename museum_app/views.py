@@ -8,11 +8,11 @@ def rooms():
     roomslist = Room.objects.all()
     return roomslist
 
-def exibition_artworks():
+def exhibition_artworks():
     artworkslist = Artwork.objects.all()
     exibition_artworks = []
     for artwork in artworkslist:
-        if str(current_state(artwork)) == 'Exibition':
+        if str(current_state(artwork)) == 'Exhibition':
             exibition_artworks.append(artwork)
     return exibition_artworks
 
@@ -27,12 +27,12 @@ def about(request):
     return render(request, 'pages/about.html', {'rooms': rooms()})
 
 def catalog(request):
-    artworkslist = exibition_artworks()
+    artworkslist = exhibition_artworks()
     return render(request, 'pages/catalog.html', {'rooms':rooms(), 'artworkslist':artworkslist})
 
 def rooms_catalog(request, room):
     room_artworks = []
-    for artwork in exibition_artworks():
+    for artwork in exhibition_artworks():
         if str(artwork.room) == str(room):
             room_artworks.append(artwork)
     return render(request, 'pages/catalog.html', {'rooms':rooms(), 'artworkslist':room_artworks})
