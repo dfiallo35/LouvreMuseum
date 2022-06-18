@@ -119,9 +119,9 @@ class Exhibition(State):
         ordering = ["-date_time"]
 
     def __str__(self):
-
-
-
-
-
         return 'Exhibition'
+
+
+
+
+
