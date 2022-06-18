@@ -24,7 +24,11 @@
 
                   <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="{% url 'catalog' %}">All Artworks</a>
-                    <a class="dropdown-item" href="">Rooms...</a>
+                    
+                    {% for room in rooms %}
+                      <a class="dropdown-item" href="{% url 'room_catalog' room %}">{{room.name}}</a>
+                    {% endfor %}
+
                   </div>
               </div>
 
