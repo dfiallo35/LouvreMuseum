@@ -1,5 +1,7 @@
+from datetime import timedelta
 from django.contrib import admin
 from .models import *
+from datetime import date
 
 
 @admin.display(description='Current State',)
