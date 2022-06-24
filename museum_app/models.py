@@ -2,6 +2,9 @@ from django.db import models
 from django.db.models import Model
 from datetime import datetime
 
+#help_text=
+
+
 class Room(Model):
     name = models.CharField('Room', max_length=100)
 
@@ -102,13 +105,15 @@ class Restoration(State):
     finish_date = models.DateField('Finish Date', blank=True, null=True)
 
     class Meta:
-        verbose_name = "Restauration"
-        verbose_name_plural = "Restaurations"
+        verbose_name = "Restoration"
+        verbose_name_plural = "Restorations"
         get_latest_by = "date_time"
         ordering = ["-date_time"]
 
     def __str__(self):
         return 'Restoration'
+
+    
     
 
 class Exhibition(State):
