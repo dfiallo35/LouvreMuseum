@@ -221,12 +221,19 @@ class ToRestorationAd(admin.ModelAdmin):
         to_restoration=[]
 
         for a in Artwork.objects.all():
+            currently_restoration = False
             states = Restoration.objects.filter(artwork__id=a.id).order_by('date_time')
-            if len(states) > 0:
-                restoration_state.append(states[0])
-            else:
-                exhibition_state.append(a)
-        
+
+            for b in states:
+                if b.finish_date == None:
+                    currently_restoration = True
+
+            if not currently_restoration:
+                if len(states) > 0:
+                    restoration_state.append(states[0])
+                else:
+                    exhibition_state.append(a)
+
         for a in exhibition_state:
             states = Exhibition.objects.filter(artwork__id=a.id).order_by('date_time')
             if len(states) > 0:
