@@ -101,8 +101,13 @@ class Given(State):
         return 'Given'
 
 class Restoration(State):
-    restoration_type = models.CharField('Restoration Type', max_length=100)
-    finish_date = models.DateField('Finish Date', blank=True, null=True)
+    restoration_type = models.CharField('Restoration Type',
+                                        max_length=100,
+                                        null=True,
+                                        blank=True)
+    finish_date = models.DateField('Finish Date',
+                                    blank=True,
+                                    null=True)
 
     class Meta:
         verbose_name = "Restoration"
