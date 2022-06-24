@@ -171,3 +171,34 @@ class RoomAd(admin.ModelAdmin):
         'name',
     ]
 
+
+@admin.action(description='Finish Restoration')
+def finish_restoration(modeladmin, request, queryset):
+    pass
+
+@admin.register(CurrentRestoration)
+class CurrentRestorationAd(admin.ModelAdmin):
+    list_display = (
+        'artwork',
+        'restoration_type',
+        'date_time',
+        'finish_date',
+    )
+    actions = [finish_restoration]
+
+    def get_queryset(self, request):
+        states =[]
+        for art in  Artwork.objects.all():
+            if str(current_state(art)) == 'Restoration':
+                states.append(current_state(art).id)
+        qs = super().get_queryset(request).filter(pk__in=states)
+        return qs
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return True
