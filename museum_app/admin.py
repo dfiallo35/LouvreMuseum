@@ -223,7 +223,6 @@ class ToRestorationAd(admin.ModelAdmin):
         for a in Artwork.objects.all():
             states = Restoration.objects.filter(artwork__id=a.id).order_by('date_time')
             if len(states) > 0:
-                print('Res', states[0].artwork, states[0].finish_date)
                 restoration_state.append(states[0])
             else:
                 exhibition_state.append(a)
@@ -231,17 +230,14 @@ class ToRestorationAd(admin.ModelAdmin):
         for a in exhibition_state:
             states = Exhibition.objects.filter(artwork__id=a.id).order_by('date_time')
             if len(states) > 0:
-                print('Ex', states[0].artwork, states[0].date_time)
                 restoration_state.append(states[0])
 
         for a in restoration_state:
             if str(a) == 'Restoration':
                 if a.finish_date != None and a.finish_date + timedelta(days=1825) <= date.today():
-                    print('Fin', a.artwork, a.finish_date)
                     to_restoration.append(a.artwork.id)
             else:
                 if a.date_time != None and a.date_time.date() + timedelta(days=1825) <= date.today():
-                    print('Fin', a.artwork, a.date_time)
                     to_restoration.append(a.artwork.id)
 
         return Artwork.objects.all().filter(id__in=to_restoration)
