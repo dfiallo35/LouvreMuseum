@@ -124,4 +124,8 @@ class Exhibition(State):
 
 
 
-
+class CurrentRestoration(Restoration):
+    class Meta:
+        proxy = True
+        verbose_name = "Current Artwok in Restoration"
+        verbose_name_plural = "Current Artwoks in Restoration"
