@@ -189,7 +189,7 @@ class CurrentRestorationAd(admin.ModelAdmin):
     def get_queryset(self, request):
         states =[]
         for art in  Artwork.objects.all():
-            if str(current_state(art)) == 'Restoration':
+            if str(current_state(art)) == 'Restoration' and current_state(art).finish_date == None:
                 states.append(current_state(art).id)
         qs = super().get_queryset(request).filter(pk__in=states)
         return qs
