@@ -205,6 +205,9 @@ class CurrentRestorationAd(admin.ModelAdmin):
 
 @admin.action(description='Send to Restoration')
 def send_to_restoration(modeladmin, request, queryset):
+    for a in queryset:
+        new = Restoration(artwork=a, date_time=datetime.today())
+        new.save()
     pass
 
 @admin.register(ToRestoration)
