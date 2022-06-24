@@ -202,3 +202,55 @@ class CurrentRestorationAd(admin.ModelAdmin):
 
     def has_change_permission(self, request, obj=None):
         return True
+
+@admin.action(description='Send to Restoration')
+def send_to_restoration(modeladmin, request, queryset):
+    pass
+
+@admin.register(ToRestoration)
+class ToRestorationAd(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'room',
+    )
+    actions = [send_to_restoration]
+
+    def get_queryset(self, request):
+        restoration_state= []
+        exhibition_state= []
+        to_restoration=[]
+
+        for a in Artwork.objects.all():
+            states = Restoration.objects.filter(artwork__id=a.id).order_by('date_time')
+            if len(states) > 0:
+                print('Res', states[0].artwork, states[0].finish_date)
+                restoration_state.append(states[0])
+            else:
+                exhibition_state.append(a)
+        
+        for a in exhibition_state:
+            states = Exhibition.objects.filter(artwork__id=a.id).order_by('date_time')
+            if len(states) > 0:
+                print('Ex', states[0].artwork, states[0].date_time)
+                restoration_state.append(states[0])
+
+        for a in restoration_state:
+            if str(a) == 'Restoration':
+                if a.finish_date != None and a.finish_date + timedelta(days=1825) <= date.today():
+                    print('Fin', a.artwork, a.finish_date)
+                    to_restoration.append(a.artwork.id)
+            else:
+                if a.date_time != None and a.date_time.date() + timedelta(days=1825) <= date.today():
+                    print('Fin', a.artwork, a.date_time)
+                    to_restoration.append(a.artwork.id)
+
+        return Artwork.objects.all().filter(id__in=to_restoration)
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False

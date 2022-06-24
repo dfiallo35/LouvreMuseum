@@ -134,3 +134,9 @@ class CurrentRestoration(Restoration):
         proxy = True
         verbose_name = "Artwork Currently Under Restoration"
         verbose_name_plural = "Artworks Currently Under Restoration"
+
+class ToRestoration(Artwork):
+    class Meta:
+        proxy = True
+        verbose_name = "Artwork to Restoration"
+        verbose_name_plural = "Artworks to Restoration"
