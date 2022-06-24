@@ -40,34 +40,57 @@
 </nav>
 
 <!--SubNavBar-->
-<section class="bg-image" style="background-image: url({% static "img/home_image_1.jpg" %});">
-  <section class="py-5 bg-primary-70">
+{% comment %} <video class="HomeCover_video cover HomeCover_Video HomeCover_Video_playing" aria-hidden="true" tabindex="-1" preload="auto" autoplay="" loop="" playsinline=""> {% endcomment %}
+  {% comment %} <source type="video/mp4" src="{% static "video/video_inicio.mp4" %}"> {% endcomment %}
+{% comment %} </video> {% endcomment %}
+
+{% comment %} <section class="bg-image" style="background-image: url({% static "img/home_image_1.jpg" %});"> {% endcomment %}
+  {% comment %} style="background-image: url({% static "video/video_inicio.mp4" %});" {% endcomment %}
+ {% comment %} <section class="bg-image">  {% endcomment %}
+  <video class="HomeCover_video cover HomeCover_Video HomeCover_Video_playing bg-image " aria-hidden="true" tabindex="-1" preload="auto" autoplay="" loop="" playsinline="" style="width:100%;"> 
+    <source type="video/mp4" src="{% static "video/video_inicio.mp4" %}">
+  </video> 
+
+<section class="showcase">
     <div class="text-center my-2">
-        <h1 class="text-white fs-0 my-1 fw-bolder serif">Louvre Museum</h1>
-        <p class="text-white-75 fs-1 mb-0 serif">Travel, discover, enjoy!</p>
+        <h1 class=" fs-0 mb-5 fw-border serif" style="text-shadow: 0 0 5px black; color:black;">Welcome to Louvre Museum</h1>
+        <p class=" fs-2 mb-5 serif">Travel, discover, enjoy!</p>
     </div>
-  </section>
-</section>
+  </section> 
+  
+{% comment %} </section> {% endcomment %}
 
 
 
 <!--Body-->
 <section class="py-5 bg-white">
-  <div class="container my-5">
-      <h2 class="text-center fs-1 my-5">TEXT</h2>
-      <div class="row justify-content-between">
-          <div class="col-lg-6">
-              
-              <p class="lead">
-                  text text text text text text text text text text text text text text text text 
-                  text text text text text text text text text text text text text text text text 
-                  text text text text text text text text text text text text text text text text 
-                  text text text text text text text text text text text text text text text text 
-                  text text text text text text text text text text text text text text text text 
-                  text text text text text text text text text text text text text text text text 
-                  text text text text text text text text text text text text text text text text 
-                  text text text text text text text text text text text text text text text text 
-                  text text text text text text text text text text text text text text text text 
+  <div class="container ">
+      {% comment %} <h2 class="text-center fs-1 my-5">TEXT</h2> {% endcomment %}
+      <div class="row col-lg-40 my-5 justify-content-between serif">
+          <div class="col-lg-6 my-5 serif">
+              <p class="lead col-lg-40 my-10 fs-4">
+
+                The Louvre is definitely the most famous museum in France and perhaps in the world. With a collection that takes months to fully discover, 
+                and occupying a building that was the center of the historical events that transformed France and the world.On August 10, 1793, the Louvre Museum, 
+                which is located on the right bank of Paris, opened its doors to the public. For more than 600 years, the Louvre had been a symbol of the wealth, 
+                power and decline of the French monarchy, so the confiscation and reconstitution of what had been a royal palace into a national museum was seen as 
+                a great cultural gesture that matched the values ​​of the recent French Revolution.
+                Today it is one of the largest museums in the world, it has around 445,000 pieces, of which 35,000 are on display. In order to enjoy it more comfortably, 
+                the museum is divided into different rooms according to their thematic organization, these being:
+                -Oriental Antiquities
+                -Egyptian Antiquities
+                -greek antiquities
+                -roman antiquities
+                -Etruscan Antiquities
+                -louvre history
+                -The Medieval Louvre
+                -Paint
+                -Sculpture
+                -art objects
+                -islamic art
+                -Graphic arts
+                The museum has an area of   210,000 m², of which 60,500 m² are galleries. With more than 8,500,000 visitors a year, they make the Louvre one of the most 
+                important museums in the world.
               </p>
               
           </div>
