@@ -37,6 +37,11 @@ class Artwork(Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kargs):
+        super().save(*args, **kargs)
+        new = Exhibition(artwork=self, date_time=datetime.today())
+        new.save()
+
 
 class State(Model):
     artwork = models.ForeignKey(Artwork, verbose_name='Artwork',
