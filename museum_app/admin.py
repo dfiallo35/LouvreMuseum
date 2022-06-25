@@ -209,6 +209,46 @@ class CurrentRestorationAd(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return True
 
+
+@admin.register(ManagerArtworks)
+class CurrentRestorationAd(admin.ModelAdmin):
+    change_list_template = 'admin/economic_evaluation.html'
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return True
+
+    
+    def changelist_view(self, request):
+        response = super().changelist_view(
+            request,
+        )
+
+        try:
+            qs = response.context_data['cl'].queryset
+        except (AttributeError, KeyError):
+            return response
+
+        metrics = {
+            'total': Sum('economic_valuation'),
+        }
+
+        response.context_data['summary'] = list(
+            qs
+            .order_by('-economic_valuation')
+        )
+        response.context_data['summary_total'] = dict(
+            qs.aggregate(**metrics)
+        )
+        return response
+
+
+
 @admin.action(description='Send to Restoration')
 def send_to_restoration(modeladmin, request, queryset):
     for a in queryset:
