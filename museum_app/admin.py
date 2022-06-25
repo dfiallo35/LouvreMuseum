@@ -176,7 +176,11 @@ class RoomAd(admin.ModelAdmin):
 
 @admin.action(description='Finish Restoration')
 def finish_restoration(modeladmin, request, queryset):
-    pass
+    for a in queryset:
+        a.finish_date = date.today()
+        a.save()
+        new = Exhibition(artwork=a.artwork, date_time=datetime.today())
+        new.save()
 
 @admin.register(CurrentRestoration)
 class CurrentRestorationAd(admin.ModelAdmin):
@@ -210,7 +214,6 @@ def send_to_restoration(modeladmin, request, queryset):
     for a in queryset:
         new = Restoration(artwork=a, date_time=datetime.today())
         new.save()
-    pass
 
 @admin.register(ToRestoration)
 class ToRestorationAd(admin.ModelAdmin):
