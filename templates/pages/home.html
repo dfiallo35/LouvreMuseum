@@ -7,7 +7,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
   <div class="container">
     <img src="{% static "img/louvre-museum-icon-louvre-museum-1282799.png" %}" class="logo px-1 my-1" alt="">
-      <h1 class="fs-1 px-1 my-1 text-white serif">Louvre Museum</h1>
+      <h1 class="fs-1 px-1 my-1 text-white serif">Welcome to Louvre Museum</h1>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item serif"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">HOME</a></li>          
@@ -51,10 +51,10 @@
     <source type="video/mp4" src="{% static "video/video_inicio.mp4" %}">
   </video> 
 
-<section class="showcase">
+<section class="showcase" style="position:absolute; top:85%; text-align:right; left:5%;">
     <div class="text-center my-2">
-        <h1 class=" fs-0 mb-5 fw-border serif" style="text-shadow: 0 0 5px black; color:black;">Welcome to Louvre Museum</h1>
-        <p class=" fs-2 mb-5 serif">Travel, discover, enjoy!</p>
+        {% comment %} <h1 class=" fs-0 mb-5 fw-border serif" style=" color:white;">Welcome to Louvre Museum</h1> {% endcomment %}
+        <p class="text-white fs-2 mb-5 serif">Travel, discover, enjoy!</p>
     </div>
   </section> 
   
