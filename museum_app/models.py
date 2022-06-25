@@ -158,3 +158,7 @@ class ManagerArtworks(Artwork):
         verbose_name_plural = "Economic Value of Artworks"
 
 class GivenWaitList(Given):
+    class Meta:
+        proxy = True
+        verbose_name = "Given Wait List"
+        verbose_name_plural = "Given Wait List"
