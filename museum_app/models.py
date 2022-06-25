@@ -150,3 +150,11 @@ class ToRestoration(Artwork):
         proxy = True
         verbose_name = "Artwork to Restoration"
         verbose_name_plural = "Artworks to Restoration"
+
+class ManagerArtworks(Artwork):
+    class Meta:
+        proxy = True
+        verbose_name = "Economic Value of Artwork"
+        verbose_name_plural = "Economic Value of Artworks"
+
+class GivenWaitList(Given):
