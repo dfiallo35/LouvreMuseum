@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import Model
-from datetime import datetime
+from datetime import datetime, date, timedelta
 
 #help_text=
 
@@ -89,21 +89,22 @@ class CollaboratingMuseum(Model):
 
 
 #State descendants
-class Given(State):
+class Loan(State):
     collaborating_museum = models.ForeignKey(CollaboratingMuseum,
                                             on_delete=models.DO_NOTHING,
                                             related_name='collaborating_museum')
-    given_time = models.DurationField('Given time')
+    loan_time = models.IntegerField('Loan time')
     amount_received = models.IntegerField('Amount Received')
+    loan_init = models.DateField('Loan start', blank=True, null=True, editable=False)
 
     class Meta:
-        verbose_name = "Given"
-        verbose_name_plural = "Givens"
+        verbose_name = "Loan"
+        verbose_name_plural = "Loans"
         get_latest_by = "date_time"
         ordering = ["-date_time"]
 
     def __str__(self):
-        return 'Given'
+        return 'Loan'
 
 class Restoration(State):
     restoration_type = models.CharField('Restoration Type',

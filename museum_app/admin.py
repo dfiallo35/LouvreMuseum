@@ -15,7 +15,7 @@ def current_state(obj: Artwork):
     else:
         states = states[0]
 
-    current_state:Given = Given.objects.filter(id=states.id)
+    current_state:Loan = Loan.objects.filter(id=states.id)
     if len(current_state) != 0:
         return current_state[0]
     
@@ -121,22 +121,33 @@ class CollaboratingMuseumAd(admin.ModelAdmin):
         'name',
     ]
 
-@admin.register(Given)
-class GivenAd(admin.ModelAdmin):
+@admin.register(Loan)
+class LoanAd(admin.ModelAdmin):
     list_display = (
         'artwork',
         'collaborating_museum',
-        'given_time',
+        'loan_time',
         'date_time',
         'amount_received',
+        'loan_init',
     )
     search_fields = [
         'artwork',
         'collaborating_museum',
     ]
     list_filter = (
+        'artwork',
         'collaborating_museum',
     )
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return True
+
+    def has_change_permission(self, request, obj=None):
+        return False
 
 @admin.register(Restoration)
 class RestorationAd(admin.ModelAdmin):
@@ -151,6 +162,7 @@ class RestorationAd(admin.ModelAdmin):
         'restoration_type',
     ]
     list_filter = (
+        'artwork',
         'restoration_type',
     )
 
@@ -270,7 +282,7 @@ class ToRestorationAd(admin.ModelAdmin):
 
         for a in Artwork.objects.all():
             currently_restoration = False
-            states = Restoration.objects.filter(artwork__id=a.id).order_by('date_time')
+            states = Restoration.objects.filter(artwork__id=a.id).order_by('-date_time')
 
             for b in states:
                 if b.finish_date == None:
@@ -304,7 +316,10 @@ class ToRestorationAd(admin.ModelAdmin):
         return False
 
     def has_change_permission(self, request, obj=None):
-        return False@admin.display(description='Current State',)
+        return False
+
+
+@admin.display(description='Current State',)
 def current_state_loan(obj: Loan):
     if obj.loan_init == None:
         return 'Waiting'
