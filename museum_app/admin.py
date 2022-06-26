@@ -304,4 +304,54 @@ class ToRestorationAd(admin.ModelAdmin):
         return False
 
     def has_change_permission(self, request, obj=None):
+        return False@admin.display(description='Current State',)
+def current_state_loan(obj: Loan):
+    if obj.loan_init == None:
+        return 'Waiting'
+    return 'Loan'
+
+@admin.register(LoanWaitList)
+class LoanWaitListAd(admin.ModelAdmin):
+    list_display = (
+        'artwork',
+        'date_time',
+        'collaborating_museum',
+        'loan_time',
+        'loan_init',
+        current_state_loan,
+    )
+
+    def get_queryset(self, request):
+        qs1= Loan.objects.all().filter(loan_init=None)
+        qs2= Loan.objects.all().exclude(loan_init=None)
+        qs=[]
+
+        for a in qs2:
+            if a.loan_init + timedelta(days=a.loan_time) > date.today():
+                qs.append(a.id)
+
+        for a in qs1:
+            qs.append(a.id)
+
+        qs = Loan.objects.all().filter(id__in=qs).order_by('artwork')
+
+        for a in Artwork.objects.all():
+            g1= qs1.filter(artwork__id=a.id).order_by('-Loan_init')
+            g2= qs.filter(artwork__id=a.id).exclude(loan_init=None)
+
+            if len(g1) > 0 and len(g2) == 0:
+                g3= qs2.filter(artwork__id=a.id).order_by('-loan_init').first()
+                g=g1.first()
+                g.loan_init= g3.loan_init + timedelta(days=g3.loan_time)
+                g.save()
+                
+        return qs.order_by('date_time')
+
+    def has_add_permission(self, request):
+        return True
+
+    def has_delete_permission(self, request, obj=None):
         return False
+
+    def has_change_permission(self, request, obj=None):
+        return True

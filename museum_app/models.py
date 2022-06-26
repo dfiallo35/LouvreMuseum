@@ -157,8 +157,30 @@ class ManagerArtworks(Artwork):
         verbose_name = "Economic Value of Artwork"
         verbose_name_plural = "Economic Value of Artworks"
 
-class GivenWaitList(Given):
+class LoanWaitList(Loan):
     class Meta:
         proxy = True
-        verbose_name = "Given Wait List"
-        verbose_name_plural = "Given Wait List"
+        verbose_name = "Loan Wait List"
+        verbose_name_plural = "Loan Wait List"
+
+    def save(self, *args, **kargs):
+        qs= Loan.objects.all().exclude(loan_init=None, id=self.id)
+        qsaux= []
+        for a in qs:
+            if a.loan_init == None or a.loan_init + timedelta(days=a.loan_time) > date.today():
+                qsaux.append(a.id)
+
+        if len(qsaux) == 0:
+            new = Loan(artwork=self.artwork,
+                        date_time=datetime.today(),
+                        collaborating_museum=self.collaborating_museum,
+                        loan_time=self.loan_time,
+                        amount_received=self.amount_received,
+                        loan_init=datetime.today())
+        else:
+            new = Loan(artwork=self.artwork,
+                        date_time=datetime.today(),
+                        collaborating_museum=self.collaborating_museum,
+                        loan_time=self.loan_time,
+                        amount_received=self.amount_received)
+        new.save()
