@@ -215,3 +215,7 @@ class LoanWaitList(Loan):
                         loan_time=self.loan_time,
                         amount_received=self.amount_received)
         new.save()
+
+    def clean(self):
+        if str(current_state(self.artwork)) == 'Restoration':
+            raise ValidationError("An artwork in restoration cannot be loaned")
