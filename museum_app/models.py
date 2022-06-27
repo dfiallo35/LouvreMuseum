@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Model
+from django.core.exceptions import ValidationError
 from datetime import datetime, date, timedelta
 
 
@@ -142,11 +143,38 @@ class Exhibition(State):
 
 
 
+def current_state(obj: Artwork):
+    states:State = State.objects.filter(artwork__id=obj.id)
+    states = states.order_by('-date_time')
+
+    if(len(states) == 0):
+        return None
+    else:
+        states = states[0]
+
+    current_state:Loan = Loan.objects.filter(id=states.id)
+    if len(current_state) != 0:
+        return current_state[0]
+    
+    current_state:Exhibition = Exhibition.objects.filter(state_ptr=states.id)
+    if len(current_state) != 0:
+        return current_state[0]
+    
+    current_state:Restoration = Restoration.objects.filter(state_ptr=states.id)
+    if len(current_state) != 0:
+        return current_state[0]
+
+    return None
+
 class CurrentRestoration(Restoration):
     class Meta:
         proxy = True
         verbose_name = "Artwork Currently Under Restoration"
         verbose_name_plural = "Artworks Currently Under Restoration"
+
+    def clean(self):
+        if str(current_state(self.artwork)) == 'Loan':
+            raise ValidationError("An artwork on loan cannot be sent for restoration")
 
 class ToRestoration(Artwork):
     class Meta:
