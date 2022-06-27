@@ -36,10 +36,10 @@ class ArtworkAd(admin.ModelAdmin):
         'name',
         'author',
         'period',
+        'room',
         'creation_date',
         'entry_date',
         'economic_valuation',
-        'room',
         current_state,
     )
     search_fields = [
@@ -52,19 +52,6 @@ class ArtworkAd(admin.ModelAdmin):
         'period',
     )
 
-    
-# @admin.register(State)
-# class StateAd(admin.ModelAdmin):
-#     list_display = (
-#         'artwork',
-#         'date_time',
-#     )
-#     search_fields =[
-#         'artwork',
-#     ]
-#     list_filter=(
-#         'artwork',
-#     )
 
 @admin.register(Painting)
 class PaintingAd(admin.ModelAdmin):
@@ -72,12 +59,13 @@ class PaintingAd(admin.ModelAdmin):
         'name',
         'author',
         'period',
+        'room',
         'creation_date',
         'entry_date',
         'economic_valuation',
         'technique',
         'style',
-        'room',
+        current_state,
     )
     search_fields = [
         'name',
@@ -89,18 +77,20 @@ class PaintingAd(admin.ModelAdmin):
         'style',
     )
 
+
 @admin.register(Sculpture)
 class SculptureAd(admin.ModelAdmin):
     list_display = (
         'name',
         'author',
         'period',
+        'room',
         'creation_date',
         'entry_date',
         'economic_valuation',
         'material',
         'style',
-        'room',
+        current_state,
     )
     search_fields = [
         'name',
@@ -112,6 +102,7 @@ class SculptureAd(admin.ModelAdmin):
         'style',
         )
 
+
 @admin.register(CollaboratingMuseum)
 class CollaboratingMuseumAd(admin.ModelAdmin):
     list_display = (
@@ -120,6 +111,7 @@ class CollaboratingMuseumAd(admin.ModelAdmin):
     search_fields = [
         'name',
     ]
+
 
 @admin.register(Loan)
 class LoanAd(admin.ModelAdmin):
@@ -140,14 +132,6 @@ class LoanAd(admin.ModelAdmin):
         'collaborating_museum',
     )
 
-    def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return True
-
-    def has_change_permission(self, request, obj=None):
-        return False
 
 @admin.register(Restoration)
 class RestorationAd(admin.ModelAdmin):
@@ -166,6 +150,7 @@ class RestorationAd(admin.ModelAdmin):
         'restoration_type',
     )
 
+
 @admin.register(Exhibition)
 class ExhibitionAd(admin.ModelAdmin):
     list_display = (
@@ -175,6 +160,7 @@ class ExhibitionAd(admin.ModelAdmin):
     search_fields = [
         'artwork',
     ]
+
 
 @admin.register(Room)
 class RoomAd(admin.ModelAdmin):
@@ -212,28 +198,10 @@ class CurrentRestorationAd(admin.ModelAdmin):
         qs = super().get_queryset(request).filter(pk__in=states)
         return qs
 
-    def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def has_change_permission(self, request, obj=None):
-        return True
-
 
 @admin.register(ManagerArtworks)
-class CurrentRestorationAd(admin.ModelAdmin):
+class ManagerArtworksAd(admin.ModelAdmin):
     change_list_template = 'admin/economic_evaluation.html'
-
-    def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def has_change_permission(self, request, obj=None):
-        return True
 
     
     def changelist_view(self, request):
@@ -260,6 +228,10 @@ class CurrentRestorationAd(admin.ModelAdmin):
         return response
 
 
+@admin.display(description='Finish Date of Last Restoration',)
+def last_restoration(obj: Artwork):
+    return Restoration.objects.all().filter(artwork__id=obj.id).order_by('-finish_date').first().finish_date
+
 
 @admin.action(description='Send to Restoration')
 def send_to_restoration(modeladmin, request, queryset):
@@ -272,6 +244,7 @@ class ToRestorationAd(admin.ModelAdmin):
     list_display = (
         'name',
         'room',
+        last_restoration,
     )
     actions = [send_to_restoration]
 
@@ -309,21 +282,12 @@ class ToRestorationAd(admin.ModelAdmin):
 
         return Artwork.objects.all().filter(id__in=to_restoration)
 
-    def has_add_permission(self, request):
-        return False
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def has_change_permission(self, request, obj=None):
-        return False
-
 
 @admin.display(description='Current State',)
 def current_state_loan(obj: Loan):
     if obj.loan_init == None:
-        return 'Waiting'
-    return 'Loan'
+        return 'On Waiting List'
+    return 'currently on Loan'
 
 @admin.register(LoanWaitList)
 class LoanWaitListAd(admin.ModelAdmin):
@@ -334,6 +298,14 @@ class LoanWaitListAd(admin.ModelAdmin):
         'loan_time',
         'loan_init',
         current_state_loan,
+    )
+
+    search_fields = [
+        'artwork',
+    ]
+
+    list_filter = (
+        'artwork',
     )
 
     def get_queryset(self, request):
@@ -351,7 +323,7 @@ class LoanWaitListAd(admin.ModelAdmin):
         qs = Loan.objects.all().filter(id__in=qs).order_by('artwork')
 
         for a in Artwork.objects.all():
-            g1= qs1.filter(artwork__id=a.id).order_by('-Loan_init')
+            g1= qs1.filter(artwork__id=a.id).order_by('-loan_init')
             g2= qs.filter(artwork__id=a.id).exclude(loan_init=None)
 
             if len(g1) > 0 and len(g2) == 0:
@@ -359,14 +331,8 @@ class LoanWaitListAd(admin.ModelAdmin):
                 g=g1.first()
                 g.loan_init= g3.loan_init + timedelta(days=g3.loan_time)
                 g.save()
+            if len(g1) == 0 and len(g2) == 0 and str(current_state(a)) == 'Loan':
+                new = Exhibition(artwork=a, date_time=datetime.today())
+                new.save()
                 
         return qs.order_by('date_time')
-
-    def has_add_permission(self, request):
-        return True
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def has_change_permission(self, request, obj=None):
-        return True
