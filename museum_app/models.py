@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Model
 from django.core.exceptions import ValidationError
 from datetime import datetime, date, timedelta
+from django.contrib import admin
 
 
 class Room(Model):
@@ -142,7 +143,7 @@ class Exhibition(State):
 
 
 
-
+@admin.display(description='Current State',)
 def current_state(obj: Artwork):
     states:State = State.objects.filter(artwork__id=obj.id)
     states = states.order_by('-date_time')
@@ -165,6 +166,7 @@ def current_state(obj: Artwork):
         return current_state[0]
 
     return None
+
 
 class CurrentRestoration(Restoration):
     class Meta:

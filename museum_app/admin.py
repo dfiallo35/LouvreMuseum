@@ -4,32 +4,6 @@ from datetime import date, timedelta
 from django.db.models import Sum
 
 
-@admin.display(description='Current State',)
-def current_state(obj: Artwork):
-
-    states:State = State.objects.filter(artwork__id=obj.id)
-    states = states.order_by('-date_time')
-
-    if(len(states) == 0):
-        return None
-    else:
-        states = states[0]
-
-    current_state:Loan = Loan.objects.filter(id=states.id)
-    if len(current_state) != 0:
-        return current_state[0]
-    
-    current_state:Exhibition = Exhibition.objects.filter(state_ptr=states.id)
-    if len(current_state) != 0:
-        return current_state[0]
-    
-    current_state:Restoration = Restoration.objects.filter(state_ptr=states.id)
-    if len(current_state) != 0:
-        return current_state[0]
-
-    return None
-
-
 @admin.register(Artwork)
 class ArtworkAd(admin.ModelAdmin):
     list_display = (
