@@ -32,6 +32,15 @@
       "prio": 0,
       "references": [],
       "title": "Gestión de usuarios"
+    },
+    {
+      "assignedTo": {
+        "name": "dionisio35"
+      },
+      "creation_time": "2022-06-15T15:46:16.395Z",
+      "id": "9",
+      "references": [],
+      "title": "New state model for actual state"
     }
   ],
   "in-progress": [
