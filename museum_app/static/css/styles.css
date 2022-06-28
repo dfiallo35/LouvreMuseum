@@ -92,13 +92,15 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-hr {
+/* hr {
   margin: 1rem 0;
   color: inherit;
   background-color: currentColor;
   border: 0;
   opacity: 0.25;
-}
+  size: 10;
+  width: 150;
+} */
 
 hr:not([size]) {
   height: 1px;
@@ -7609,7 +7611,7 @@ textarea.form-control-lg {
 }
 
 .fs-1 {
-  font-size: calc(1.375rem + 1.5vw) !important;
+  font-size: calc(2.5rem + 2.5vw) !important;
 }
 
 .fs-2 {
@@ -7837,6 +7839,10 @@ textarea.form-control-lg {
 
 .bg-primary-70{
   background-color: rgb(52, 58, 64, 0.7);
+}
+
+.bg-primary-50{
+  background-color: rgb(52, 58, 64, 0.5);
 }
 
 .bg-secondary {
@@ -11259,7 +11265,7 @@ textarea.form-control-lg {
 }
 @media (min-width: 1200px) {
   .fs-1 {
-    font-size: 2.5rem !important;
+    font-size: 4rem !important;
   }
 
   .fs-2 {
@@ -11326,7 +11332,23 @@ textarea.form-control-lg {
   height: 6%;
   width: 6%;
 }
+
 .logo-gif{
   height: 80%;
-  width: 90%;
+  width: 70%;
+}
+
+.about-img{
+  height: 80%;
+  width: 110%;
+}
+
+.map-img{
+  height: 80%;
+  width: 50%;
+}
+
+.workers-img{
+  height: 70%;
+  width: 70%;
 }
