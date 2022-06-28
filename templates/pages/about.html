@@ -5,7 +5,7 @@
 <!--NavBar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
   <div class="container">
-    <img src="{% static "img/louvre-museum-icon-louvre-museum-1282799.png" %}" class="logo px-1 my-1" alt="">
+    <img src="{% static "img/logo.png" %}" class="logo px-1 my-1" alt="">
       <h1 class="fs-1 px-1 my-1 text-white serif">Louvre Museum</h1>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -38,42 +38,69 @@
 </nav>
 
 <!--SubNavBar-->
-<section class="bg-image" style="background-image: url({% static "img/about_image_1.png" %});">
-    <section class="py-5 bg-primary-70">
+<section class="bg-image" style="background-image: url({% static "img/about_4.jpg" %});">
+    <section class="py-5 bg-primary-50">
         <div class="text-center my-2">
-        <h1 class="text-white fs-0 my-1 fw-bolder serif">About Louvre</h1>
+        <h1 class="text-white py-5 fs-0 my-1 fw-bolder serif">About Louvre</h1>
         </div>
     </section>
 </section>
 
-<section id="team" class="py-5">
+
+<section class="py-5 bg-white">
+  <div class="container ">
+      {% comment %} <h2 class="text-center fs-1 my-5">TEXT</h2> {% endcomment %}
+      <div class="row col-lg-40 my-5 justify-content-between serif">
+          <div class="col-lg-6 my-5 serif">
+              <h1>About Louvre</h1>
+              <p class="lead col-lg-40 my-10 fs-4">
+                The Louvre is definitely the most famous museum in France and perhaps in the world. With a collection that takes months to fully discover, 
+                and occupying a building that was the center of the historical events that transformed France and the world.On August 10, 1793, the Louvre Museum, 
+                which is located on the right bank of Paris, opened its doors to the public. For more than 600 years, the Louvre had been a symbol of the wealth, 
+                power and decline of the French monarchy, so the confiscation and reconstitution of what had been a royal palace into a national museum was seen as 
+                a great cultural gesture that matched the values ​​of the recent French Revolution.
+                Today it is one of the largest museums in the world, it has around 445,000 pieces, of which 35,000 are on display. In order to enjoy it more comfortably, 
+                the museum is divided into different rooms according to their thematic organization, these being: Oriental Antiquities, Egyptian Antiquities, greek antiquities, roman antiquities
+                Etruscan Antiquities, louvre history, The Medieval Louvre, Paint, Sculpture, art objects, islamic art, Graphic arts.
+              </p>
+              
+          </div>
+          <div class="col-lg-6 mt-5">
+            <img class="about-img mt-5" src="{% static "img/about_5.jpg" %}" alt="Card image">
+          </div>
+      </div>
+
+  </div>
+</section>
+
+<section class="py-5 bg-white">
     <div class="container">
-      <h2 class="text-center serif">Museum workers</h2>
+      <h2 class="text-center fs-1 mb-5 serif">Museum workers</h2>
       <div class="row text-center">
-        <div class="col-md-4">
-        <img  class="rounded-circle mb-3" style="width: 50%;" src="{% static "img/directora.jpeg" %}" alt="">
+        <div class="col-md-4 py-5">
+        <img  class="rounded-circle mb-3 workers-img" src="{% static "img/about_1.jpeg" %}" alt="">
           <h4 class="serif">Laurence des Cars</h4>
           <p class="text-success" style="color: grey">
             <i class="text-success mb-3"></i>Director</p>
         </div>
 
-        <div class="col-md-4">
-        <img  class="rounded-circle mb-3" style=" width: 50%;" src="{% static "img/Ateliers-enfant-2014-Musee-du-Louvre-Olivier-Ouadah-1024x681.jpg" %}" alt="">
-          <h4 class="serif">Mark Hudson</h4>
+        <div class="col-md-4 py-5">
+        <img  class="rounded-circle mb-3 workers-img" src="{% static "img/about_2.jpg" %}" alt="">
+          <h4 class="serif">Vincent Pomarède</h4>
           <p class="text-success" style="color: grey">
             <i class="text-success mb-3"></i>Catalog Manager</p>
         </div>
 
-        <div class="col-md-4">
-            <img  class="rounded-circle mb-3" style="width: 50%;" src="{% static "img/Ateliers-enfant-2014-Musee-du-Louvre-Olivier-Ouadah-1024x681.jpg" %}" alt="">
-          <h4 class="serif">Jenny Johnson</h4>
+        <div class="col-md-4 py-5">
+            <img  class="rounded-circle mb-3 workers-img" src="{% static "img/about_3.jpg" %}" alt="">
+          <h4 class="serif">Francis Steinbock</h4>
           <p class="text-success" style="color: grey">
             <i class="text-success mb-3"></i>Restorer</p>
         </div>
 
       </div>
     </div>
-  </section>
+</section>
 
 
 

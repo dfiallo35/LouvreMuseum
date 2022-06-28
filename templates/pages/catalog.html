@@ -5,7 +5,7 @@
 <!--NavBar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
   <div class="container">
-    <img src="{% static "img/louvre-museum-icon-louvre-museum-1282799.png" %}" class="logo px-1 my-1" alt="">
+    <img src="{% static "img/logo.png" %}" class="logo px-1 my-1" alt="">
       <h1 class="fs-1 px-1 my-1 text-white serif">Louvre Museum</h1>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -39,7 +39,7 @@
 
 <!--SubNavBar-->
 <section class="bg-image" style="background-image: url({% static "img/galery_image.jpg" %});">
-  <section class="py-5 bg-primary-70">
+  <section class="py-5 bg-primary-50">
     <div class="text-center my-2">
       <h1 class="text-white fs-0 my-1 fw-bolder serif">Catalog</h1>
       <p class="text-white-75 fs-4 mb-0 serif">Travel, discover, enjoy!</p>
@@ -61,8 +61,7 @@
           <div class="card-body">
 
             <div class="listing-heading text-center">
-              <h2 class="serif card-text">{{artwork.name}}</h2>
-              <p class="serif text-secondary">{{artwork.type}}</p>
+              <h2 class="serif fs-4 card-text">{{artwork.name}}</h2>
             </div>
             <hr>
             <div class="text-secondary">

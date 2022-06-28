@@ -6,8 +6,8 @@
 <!--NavBar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
   <div class="container">
-    <img src="{% static "img/louvre-museum-icon-louvre-museum-1282799.png" %}" class="logo px-1 my-1" alt="">
-      <h1 class="fs-1 px-1 my-1 text-white serif">Welcome to Louvre Museum</h1>
+    <img src="{% static "img/logo.png" %}" class="logo px-1 my-1" alt="">
+      <h1 class="fs-1 px-1 my-1 text-white serif">Louvre Museum</h1>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item serif"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">HOME</a></li>          
@@ -39,65 +39,128 @@
 </nav>
 
 <!--SubNavBar-->
-{% comment %} <video class="HomeCover_video cover HomeCover_Video HomeCover_Video_playing" aria-hidden="true" tabindex="-1" preload="auto" autoplay="" loop="" playsinline=""> {% endcomment %}
-  {% comment %} <source type="video/mp4" src="{% static "video/video_inicio.mp4" %}"> {% endcomment %}
-{% comment %} </video> {% endcomment %}
-
-{% comment %} <section class="bg-image" style="background-image: url({% static "img/home_image_1.jpg" %});"> {% endcomment %}
-  {% comment %} style="background-image: url({% static "video/video_inicio.mp4" %});" {% endcomment %}
- {% comment %} <section class="bg-image">  {% endcomment %}
-  <video class="HomeCover_video cover HomeCover_Video HomeCover_Video_playing bg-image " aria-hidden="true" tabindex="-1" preload="auto" autoplay="" loop="" playsinline="" style="width:100%;"> 
+<div class="HomeCover HomeCover_lock" style="--ratio:2.2;">
+  <video class="HomeCover_video cover HomeCover_Video HomeCover_Video_playing"
+                aria-hidden="true" tabindex="-1" preload="auto" autoplay loop playsinline>
     <source type="video/mp4" src="{% static "video/video_inicio.mp4" %}">
-  </video> 
-
-<section class="showcase" style="position:absolute; top:85%; text-align:right; left:5%;">
-    <div class="text-center my-2">
-        {% comment %} <h1 class=" fs-0 mb-5 fw-border serif" style=" color:white;">Welcome to Louvre Museum</h1> {% endcomment %}
-        <p class="text-white fs-2 mb-5 serif">Travel, discover, enjoy!</p>
-    </div>
-  </section> 
-  
-{% comment %} </section> {% endcomment %}
-
+  </video>
+</div>
 
 
 <!--Body-->
 <section class="py-5 bg-white">
   <div class="container ">
-      {% comment %} <h2 class="text-center fs-1 my-5">TEXT</h2> {% endcomment %}
       <div class="row col-lg-40 my-5 justify-content-between serif">
           <div class="col-lg-6 my-5 serif">
+              <h1>Welcome to Louvre Museum</h1>
               <p class="lead col-lg-40 my-10 fs-4">
-
-                The Louvre is definitely the most famous museum in France and perhaps in the world. With a collection that takes months to fully discover, 
-                and occupying a building that was the center of the historical events that transformed France and the world.On August 10, 1793, the Louvre Museum, 
-                which is located on the right bank of Paris, opened its doors to the public. For more than 600 years, the Louvre had been a symbol of the wealth, 
-                power and decline of the French monarchy, so the confiscation and reconstitution of what had been a royal palace into a national museum was seen as 
-                a great cultural gesture that matched the values ​​of the recent French Revolution.
-                Today it is one of the largest museums in the world, it has around 445,000 pieces, of which 35,000 are on display. In order to enjoy it more comfortably, 
-                the museum is divided into different rooms according to their thematic organization, these being: Oriental Antiquities, Egyptian Antiquities, greek antiquities, roman antiquities
-                Etruscan Antiquities, louvre history, The Medieval Louvre, Paint, Sculpture, art objects, islamic art, Graphic arts.
-                The museum has an area of   210,000 m², of which 60,500 m² are galleries. With more than 8,500,000 visitors a year, they make the Louvre one of the most 
-                important museums in the world.
+                There are plenty of good reasons to visit the Louvre! So many works of art to 
+                discover in this fabulous museum that used to be a palace! So plan your visit in 
+                advance to make the most of it. Why not pick one of our visitor trails to follow a 
+                theme-based tour? And when you need a break, where better than the museum’s restful 
+                gardens?
               </p>
               
           </div>
           <div class="col-lg-6">
-          
-                  <img class="logo-gif" src="{% static "img/image_processing20201115-10548-1kq6tsk.gif" %}" alt="Card image">
+            <img class="logo-gif" src="{% static "img/home_4.gif" %}" alt="Card image">
           </div>
       </div>
 
   </div>
 </section>
 
-<section class="bg-dark text-white text-center bg-image" style="background-image: url({% static "img/home_image_2.jpg" %});">
-  <section class="py-5 bg-primary-70">
-    <h2 class="fs-0 serif">Visit our Artworks Catalog</h2>
-    {% comment %} <h4>TEXT</h4> {% endcomment %}
+
+
+<section class="bg-dark text-white text-center bg-image" style="background-image: url({% static "img/home_1.jpg" %});">
+  <section class="py-5 bg-primary-50">
+    <h2 class="fs-0 py-3 serif">Visit our Artworks Catalog</h2>
     <a href="{% url 'catalog' %}" class="btn btn-secondary text-white btn-lg">Catalog</a>
   </section>
 </section>
 
+
+<section class="py-5 bg-white">
+  <h2 class="text-center fs-1 serif">Museum Map</h2>
+  <p class="text-center text-black-50 fs-5 my-2 mb-5 serif">
+    Maps are essential. Planning a trip without a map is like building a house without plans.
+  </p>
+  <div class="text-center py-5">
+    <img class="map-img" src="{% static "img/home_2.jpg" %}" alt="Card image">
+  </div>
+</section>
+
+
+<section class="bg-image" style="background-image: url({% static "img/home_3.jpg" %});">
+  <section class="py-5 bg-primary-70">
+    <div class="text-center my-3">
+      <h1 class="text-white fs-0 my-1 fw-bolder serif">MUSEUM RULES</h1>
+      <p class="text-white-75 fs-4 mb-0 serif">To ensure the safety of all visitors and artworks</p>
+    </div>
+  </section>
+</section>
+
+<section class="pt-2 pb-5 bg-white">
+  <div class="container ">
+      <div class="row col-lg-40 my-5 justify-content-between serif">
+
+          <div class="col-lg-6 my-5 serif">
+              
+              <h1 class="fs-2 mt-3  mt-5 serif">MAXIMUM SIZE OF BAG ALLOWED</h1>
+              <p class="lead col-lg-40 my-10 fs-4">
+                You cannot bring large bags or suitcases to the museum but lockers are available free of charge for smaller items.
+              </p>
+              <p  class="lead col-lg-40 my-10 fs-4">
+                Please note: Any items exceeding 55 x 35 x 20 cm will not be allowed in the museum (welcome area and exhibition rooms).
+              </p>
+              <p  class="lead col-lg-40 my-10 fs-4">
+                All items left in the lockers must be collected the same day. The museum shall not be held responsible for any items of value placed in the lockers. Please contact us for further information.
+              </p>
+              
+              <h1 class="fs-2 my-3  mt-5 serif">RESPECT THE ARTWORKS</h1>
+              <p  class="lead col-lg-40 my-10 fs-4">
+                To ensure the safety of the artworks and other visitors, in the exhibition rooms you are not allowed to:
+              </p>
+
+              <ul class="my-10 fs-4">
+                <li>Drink</li>
+                <li>Eat</li>
+                <li>Smoke</li>
+                <li>Make a lot of noise</li>
+                <li>Touch the artworks</li>
+                <li>Run</li>
+              </ul>
+              
+          </div>
+
+          <div class="col-lg-6 my-5 serif">
+
+            <h1 class="fs-2 my-3  mt-5 serif">PHOTOGRAPHY</h1>
+            <p  class="lead col-lg-40 my-10 fs-4">
+              You can take photos and videos in the permanent collections if they are for personal use. However, you are not allowed to use selfie sticks, flash or lighting.
+            </p>
+            <p  class="lead col-lg-40 my-10 fs-4">
+              In the temporary exhibition galleries, it may be prohibited to take photos or videos of certain works.
+            </p>
+
+            <h1 class="fs-2 my-3 mt-5 serif">LEAVING THE MUSEUM</h1>
+            <p  class="lead col-lg-40 my-10 fs-4">
+              In order to help us manage the number of visitors and queues, any exit is final.
+            </p>
+
+            <h1 class="fs-2 my-3  mt-5 serif">PROHIBITED ITEMS</h1>
+            <ul class="my-10 fs-4">
+              <li>all categories of weapons and ammunition</li>
+              <li>tools, in particular craft knives, screwdrivers, wrenches, hammers, pliers and clippers</li>
+              <li>any excessively heavy, cumbersome, or foul-smelling item</li>
+              <li>any explosive, flammable or volatile substance</li>
+              <li>any item generating incapacitating or neutralising products, or electrical weapon used to neutralise individuals</li>
+              <li>any artwork or antique</li>
+            </ul>
+          </div>
+      </div>
+
+  </div>
+</section>
 
 {% endblock content %}
