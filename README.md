@@ -1,8 +1,8 @@
 # Louvre Museum
 
-The implementation of a web page of the louvre museum in django. Includes homepage, about, a catalog of artworks and an administration page for museum workers.
+Museum website with data management system for administrators, including a sales and loan system between museums, developed using Python with Django, SQLite, and HTML, CSS, and Javascript with the Bootstrap framework.
 
 ### superuser:
-user:manager
-password:1234
+- user: manager
+- password: 1234
  
